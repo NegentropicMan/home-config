@@ -10,6 +10,7 @@
     byobu
     eweb
     asciidoctor
+    imagemagick
   ];
 
   programs.neovim = {
