@@ -16,6 +16,17 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
+
+    extraConfig = ''
+      colorscheme PaperColor
+    '';
+
+    plugins = with pkgs.vimPlugins; [
+      airline
+      papercolor-theme
+      vim-addon-nix
+    ];
   };
 
   programs.git = {
