@@ -1,36 +1,13 @@
 { config, pkgs, ... }:
 
 {
-
-  home.packages = with pkgs; [
-    htop
-    fortune
-    broot
-    screen
-    byobu
-    eweb
-    asciidoctor
-    imagemagick
-  ];
-
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "NegentropicMan";
-    userEmail = "florian.schmitz@gmail.com";
-  };
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
-  home.username = "pi";
-  home.homeDirectory = "/home/pi";
+  imports = [
+    ./machine/pi.nix
+    ./role/remoteenv.nix
+    ./user/pi.nix
+  ];
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
