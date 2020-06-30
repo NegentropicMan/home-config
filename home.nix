@@ -2,16 +2,21 @@
 
 {
 
-  home.packages = [
-    pkgs.htop
-    pkgs.fortune
-    pkgs.broot
-    pkgs.screen
-    pkgs.byobu
-    pkgs.eweb
-    pkgs.asciidoctor
-    pkgs.neovim
+  home.packages = with pkgs; [
+    htop
+    fortune
+    broot
+    screen
+    byobu
+    eweb
+    asciidoctor
   ];
+
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
