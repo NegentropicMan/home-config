@@ -10,6 +10,7 @@
     pkgs.byobu
     pkgs.eweb
     pkgs.asciidoctor
+    pkgs.neovim
   ];
 
   # Let Home Manager install and manage itself.
