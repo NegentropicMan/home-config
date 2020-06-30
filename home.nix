@@ -9,6 +9,7 @@
     pkgs.screen
     pkgs.byobu
     pkgs.eweb
+    pkgs.asciidoctor
   ];
 
   # Let Home Manager install and manage itself.
