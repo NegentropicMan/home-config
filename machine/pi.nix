@@ -5,5 +5,8 @@
 
   home.packages = with pkgs; [
   ];
-
+  
+  home.sessionVariables = {
+    LOCALE_ARCHIVE = "/usr/lib/locale/locale-archive";
+  };
 }
