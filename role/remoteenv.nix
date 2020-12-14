@@ -23,6 +23,7 @@ in
     asciidoctor
     imagemagick
     python3
+    fzf
   ];
 
   programs.fish.enable = true;
@@ -61,9 +62,14 @@ in
       ".." = "cd ..";
       "a.sharetext" = "curl -F 'f:1=<-' ix.io";
       "a.weather" = "curl wttr.in/Nürnberg";
-      exa = "ls"; 
+      "ls" = "exa"; 
     };
     
     profileExtra = pkgs.lib.fileContents ./profile.bash;
+  };
+
+  programs.tmux = {
+    enable = true;
+    shortcut = "a";
   };
 }
