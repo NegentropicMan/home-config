@@ -24,6 +24,7 @@
 
     extraConfig = ''
       colorscheme PaperColor
+      set relativenumber
     '';
 
     plugins = with pkgs.vimPlugins; [
