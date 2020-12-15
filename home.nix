@@ -5,7 +5,8 @@
   programs.home-manager.enable = true;
   imports = [
 #    ./machine/pi.nix
-    ./role/remoteenv.nix
+#    ./role/remoteenv.nix
+    ./role/devmachine.nix
     ./user/fschmitz.nix
   ];
 
