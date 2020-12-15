@@ -4,9 +4,9 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   imports = [
-    ./machine/pi.nix
+#    ./machine/pi.nix
     ./role/remoteenv.nix
-    ./user/pi.nix
+    ./user/fschmitz.nix
   ];
 
   # This value determines the Home Manager release that your
