@@ -25,15 +25,25 @@ in
     asciidoctor
     imagemagick
     python3
-    fzf
     plantuml
     pandoc
     jq
     vscode
     alacritty
   ];
+  
+  fonts.fonts = with pkgs; [
+    fira-code
+    fira-code-symbols
+];
 
   programs.fish.enable = true;
+  
+  programs.fzf.enable = true;
+  programs.fzf.enableBashIntegration = true;
+  programs.fzf.enableFishIntegration = true;
+  
+  programs.alacritty = enable;
 
   programs.home-manager.enable = true;
   
