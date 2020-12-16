@@ -28,7 +28,6 @@ in
     plantuml
     pandoc
     jq
-    vscode
     alacritty
   ];
   
@@ -36,6 +35,19 @@ in
     fira-code
     fira-code-symbols
 ];
+
+  programs.vscode = {
+    enable = true;
+    package = pkgs.vscode;
+    extensions = with pkgs.vscode-extensions; [
+      bbenoist.Nix
+    ];
+
+    userSettings = {
+      "[nix]"."editor.tabSize" = 2;
+      "Telemetry"."Enable Telemetry" = false;
+    };
+  };
 
   programs.fish.enable = true;
   
