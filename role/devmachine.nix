@@ -41,11 +41,17 @@ in
     package = pkgs.vscode;
     extensions = with pkgs.vscode-extensions; [
       bbenoist.Nix
+      rozbo.papercolor-vscode
+      ms-vscode-remote.remote-ssh
     ];
 
     userSettings = {
       "[nix]"."editor.tabSize" = 2;
-      "Telemetry"."Enable Telemetry" = false;
+      "workbench.colorTheme" = "papercolor-vscode"
+      "telemetry.enableTelemtry" = false
+      "telemetry.enableCrashReporter" = false
+      "editor.fontFamily" = "Fira Code",
+      "editor.fontLigatures" = true
     };
   };
 
