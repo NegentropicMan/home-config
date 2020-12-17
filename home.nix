@@ -8,6 +8,9 @@
 #    ./role/remoteenv.nix
     ./role/devmachine.nix
     ./user/fschmitz.nix
+    ./fonts.nix
+    ./git.nix
+    ./shells.nix
   ];
 
   # This value determines the Home Manager release that your
