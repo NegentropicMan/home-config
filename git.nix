@@ -7,9 +7,9 @@
   programs.git = {
     package = pkgs.gitAndTools.gitFull;
     enable = true;
-    userName = "Sridhar Ratnakumar";
-    userEmail = "srid@srid.ca";
-    ignores = [ "*~" "*ghcid.txt" ];
+    userName = "NegentropicMan";
+    userEmail = "florian.schmitz@gmail.com";
+    ignores = [ "*~" ];
     aliases = {
       co = "checkout";
       ci = "commit";
