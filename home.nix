@@ -6,11 +6,12 @@
   imports = [
 #    ./machine/pi.nix
 #    ./role/remoteenv.nix
-    ./role/devmachine.nix
+#    ./role/devmachine.nix
     ./user/fschmitz.nix
-    ./fonts.nix
+#    ./fonts.nix
     ./git.nix
     ./shells.nix
+    ./nvim.nix
   ];
 
   # This value determines the Home Manager release that your

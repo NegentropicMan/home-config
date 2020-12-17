@@ -2,7 +2,8 @@
 
 {
    fonts = {
-    enableFontDir = true;
+ #   enableFontDir = true;
+    fontconfig = true;
     fonts = with pkgs; [
       dejavu_fonts
       emojione

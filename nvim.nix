@@ -27,39 +27,26 @@ let
     };
   };
 in
-  with pkgs; neovim.override {
+  {
     programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-    extraConfig = ''
-      set relativenumber
-      colorscheme PaperColor
-      set nobackup
-      set showcmd
-      let mapleader=","
-      nnoremap <Leader>s :SemanticHighlightToggle<cr>
-    '';
-    };
-    
-    configure = {
-      # Builtin packaging
-      # List of plugins: nix-env -qaP -A nixos.vimPlugins
-      packages.myVimPackage = with pkgs.vimPlugins; {
-        # Loaded on launch
-        start = [ ];
-        # Manually loadable by calling `:packadd $plugin-name
-        opt = [ ];
-      };
+      enable = true;
+      viAlias = true;
+      vimAlias = true;
+      vimdiffAlias = true;
+      extraConfig = ''
+        set relativenumber
+        colorscheme PaperColor
+        set nobackup
+        set showcmd
+        let mapleader=","
+        nnoremap <Leader>s :SemanticHighlightToggle<cr>
+      '';
 
-      # VAM
-      vam.knownPlugins = pkgs.vimPlugins // customPlugins;
-      vam.pluginDictionaries = [
-        { name = "semantic-highlight"; }
-        { name = "papercolor-theme"; }
-        { name = "vim-addon-nix"; }
-        { name = "airline"; }
+      plugins = with pkgs.vimPlugins // customPlugins; [
+        airline
+	papercolor-theme
+	vim-addon-nix
+	semantic-highlight
       ];
     };
   }

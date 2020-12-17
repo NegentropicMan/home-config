@@ -12,7 +12,6 @@ let
     ".." = "cd ..";
     "a.sharetext" = "curl -F 'f:1=<-' ix.io";
     "a.weather" = "curl wttr.in/Nürnberg";
-    "ls" = "exa"; 
   };
 in
 {
@@ -20,7 +19,6 @@ in
     # Programs used by shell config defined below.
     exa
     aria
-    nodePackages.castnow
   ];
 
   programs.broot = {
