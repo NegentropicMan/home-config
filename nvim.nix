@@ -6,7 +6,6 @@ let
   # cf. https://nixos.wiki/wiki/Vim#Adding_new_plugins 
 
   customPlugins = {
-
     semantic-highlight= pkgs.vimUtils.buildVimPlugin {
       name = "semantic-highlight";
       src = pkgs.fetchFromGitHub {
@@ -29,6 +28,21 @@ let
   };
 in
   with pkgs; neovim.override {
+    programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+    extraConfig = ''
+      set relativenumber
+      colorscheme PaperColor
+      set nobackup
+      set showcmd
+      let mapleader=","
+      nnoremap <Leader>s :SemanticHighlightToggle<cr>
+    '';
+    };
+    
     configure = {
       # Builtin packaging
       # List of plugins: nix-env -qaP -A nixos.vimPlugins
