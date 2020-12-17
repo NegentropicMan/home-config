@@ -31,29 +31,29 @@ in
     alacritty
   ];
   
-  fonts.fonts = with pkgs; [
-    fira-code
-    fira-code-symbols
-];
+#  fonts = with pkgs; [
+#    fira-code
+#    fira-code-symbols
+#];
 
-  programs.vscode = {
-    enable = true;
-    package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions; [
-      bbenoist.Nix
-      rozbo.papercolor-vscode
-      ms-vscode-remote.remote-ssh
-    ];
-
-    userSettings = {
-      "[nix]"."editor.tabSize" = 2;
-      "workbench.colorTheme" = "papercolor-vscode"
-      "telemetry.enableTelemtry" = false
-      "telemetry.enableCrashReporter" = false
-      "editor.fontFamily" = "Fira Code",
-      "editor.fontLigatures" = true
-    };
-  };
+#  programs.vscode = {
+#    enable = true;
+#    package = pkgs.vscode;
+#    extensions = with pkgs.vscode-extensions; [
+#      bbenoist.Nix
+#      rozbo.papercolor-vscode
+#      ms-vscode-remote.remote-ssh
+#    ];
+#
+#    userSettings = {
+#      "[nix]"."editor.tabSize" = 2;
+#      "workbench.colorTheme" = "papercolor-vscode"
+#      "telemetry.enableTelemtry" = false
+#      "telemetry.enableCrashReporter" = false
+#      "editor.fontFamily" = "Fira Code",
+#      "editor.fontLigatures" = true
+#    };
+#  };
 
   programs.fish.enable = true;
   
@@ -61,7 +61,7 @@ in
   programs.fzf.enableBashIntegration = true;
   programs.fzf.enableFishIntegration = true;
   
-  programs.alacritty = enable;
+  programs.alacritty.enable = true;
 
   programs.home-manager.enable = true;
   
