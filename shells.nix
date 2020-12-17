@@ -9,6 +9,10 @@ let
     e = "eval $EDITOR";
     ee = "e (fzf)";
     download = "aria2c --file-allocation=none --seed-time=0";
+    ".." = "cd ..";
+    "a.sharetext" = "curl -F 'f:1=<-' ix.io";
+    "a.weather" = "curl wttr.in/Nürnberg";
+    "ls" = "exa"; 
   };
 in
 {
