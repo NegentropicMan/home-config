@@ -6,6 +6,9 @@ in {
   home.packages = with pkgs; [
     dmenu
     st
+    feh
+    picom
+    rofi
   ];
   
   home.sessionVariables = {
@@ -19,7 +22,53 @@ in {
       package = pkgs.i3-gaps;
       config = {
         modifier = mod;
-        fonts = ["DejaVu Sans Mono, FontAwesome 6"];
+        #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
+        fonts = ["FiraCode 12"];
+
+        colors = {
+        let 
+          focus = "#AA0605";
+          unfocus = "#F0EDEC";
+        in
+        {
+            focused = {
+              border = focus;
+              bg = focus;
+              text = focus;
+              indicator = focus;
+            };
+            focusedInactive = {
+              border = unfocus;
+              bg = unfocus;
+              text = unfocus;
+              indicator = unfocus;
+            };
+            unfocused = {
+              border = unfocus;
+              bg = unfocus;
+              text = unfocus;
+              indicator = unfocus;
+            };
+            urgent = {
+              border = focus;
+              bg = focus;
+              text = focus;
+              indicator = focus;
+            };
+            background = unfocus;
+          }; # let end
+        }; # colors end
+        
+        floating.modifier = mod;
+        
+        gaps.inner = 3;
+        gaps.smartGaps = "on";
+        gaps.smartBorders = "on";
+        startup = [
+          {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false}
+          {command = "xsettingsd";notification = false}
+          {command = "picom  -bcCGf -i 0.7 -e 0.9"; notification = false}
+        ];
       };
     };
   };
