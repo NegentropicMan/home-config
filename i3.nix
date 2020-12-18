@@ -81,7 +81,7 @@ in {
     "antialias" = true;
     "autohint" = true;
     "*.cursorColor" = "#25c3dc";
-    "*.pointerColor" = #25c3dc";
+    "*.pointerColor" = "#25c3dc";
     "*.foreground" = "#f2f2f2";
     "*.background" = "#1C1C1C";
     "*.color0" = "#2c2c2c";
