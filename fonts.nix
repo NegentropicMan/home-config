@@ -1,21 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-   fonts = {
- #   enableFontDir = true;
-    fontconfig = true;
-    fonts = with pkgs; [
-      dejavu_fonts
-      emojione
-      fantasque-sans-mono
+   fonts.fontconfig.enable = true;
+   home.packages = with pkgs; [
       fira-code
+      fira-code-symbols
       font-awesome-ttf
-      google-fonts
-      hack-font
-      hasklig
-      iosevka
-      noto-fonts-emoji
       powerline-fonts
     ];
-  };
 }

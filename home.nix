@@ -8,12 +8,17 @@
 #    ./role/remoteenv.nix
 #    ./role/devmachine.nix
     ./user/fschmitz.nix
-#    ./fonts.nix
+    ./fonts.nix
     ./git.nix
     ./shells.nix
     ./nvim.nix
+    ./i3.nix
+#    ./gnome.nix
+    ./firefox.nix
   ];
-
+  
+  home.packages = with pkgs; [
+  ];
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
