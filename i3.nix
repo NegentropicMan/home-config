@@ -5,7 +5,13 @@ let
 in {
   home.packages = with pkgs; [
     dmenu
+    st
   ];
+  
+  home.sessionVariables = {
+    TERMINAL = "st -f FiraCode Nerd Font:pixelsize=12";
+    browser = "firefox";
+  };
   xsession = {
      enable = true;
      windowManager.i3 = {
@@ -17,6 +23,7 @@ in {
       };
     };
   };
+  
   xresources.properties = {
     "Xft.autohint" = 0;
     "Xft.lcdfilter" = "lcddefault";
@@ -48,6 +55,5 @@ in {
     "*.color14" = "#25c3dc";
     "*.color7" = "#ffffff";
     "*.color15" = "#ffffff";
-    
   };
 }
