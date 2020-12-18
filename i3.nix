@@ -26,6 +26,7 @@ in {
         modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
         fonts = ["FiraCode 12"];
+        font = "FiraCode 14";
 
         colors = {
             focused = {
