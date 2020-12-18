@@ -30,25 +30,25 @@ in {
         colors = {
             focused = {
               border = focus;
-              bg = focus;
+              background = focus;
               text = focus;
               indicator = focus;
             };
             focusedInactive = {
               border = unfocus;
-              bg = unfocus;
+              background = unfocus;
               text = unfocus;
               indicator = unfocus;
             };
             unfocused = {
               border = unfocus;
-              bg = unfocus;
+              background = unfocus;
               text = unfocus;
               indicator = unfocus;
             };
             urgent = {
               border = focus;
-              bg = focus;
+              background = focus;
               text = focus;
               indicator = focus;
             };
