@@ -2,6 +2,8 @@
 
 let
   mod = "Mod4";
+  focus = "#AA0605";
+  unfocus = "#F0EDEC";
 in {
   home.packages = with pkgs; [
     dmenu
@@ -26,11 +28,6 @@ in {
         fonts = ["FiraCode 12"];
 
         colors = {
-        let 
-          focus = "#AA0605";
-          unfocus = "#F0EDEC";
-        in
-        {
             focused = {
               border = focus;
               bg = focus;
@@ -56,7 +53,6 @@ in {
               indicator = focus;
             };
             background = unfocus;
-          }; # let end
         }; # colors end
         
         floating.modifier = mod;
