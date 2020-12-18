@@ -63,7 +63,7 @@ in {
         
         gaps.inner = 3;
         gaps.smartGaps = true;
-        gaps.smartBorders = true;
+        gaps.smartBorders = "on";
         startup = [
           {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false;}
           {command = "xsettingsd";notification = false;}
