@@ -69,6 +69,14 @@ in {
           {command = "xsettingsd";notification = false;}
           {command = "picom  -bcCGf -i 0.7 -e 0.9"; notification = false;}
         ];
+        keybindings = lib.mkOptionDefault {
+          "${mod}+Return" = "exec st -f 'FiraCode:size=14:autohint=true:antialias=true'"; # FantasqueSansMono
+          "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -matching fuzzy
+bindsym $alt+space exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3";
+          "${mod}+c" = "kill";
+          "${mod}+Shift+r" = "restart";
+          "${mod}+q" = "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'";
+        };
       };
     };
   };
