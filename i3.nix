@@ -17,4 +17,37 @@ in {
       };
     };
   };
+  xresources.properties = {
+    "Xft.autohint" = 0;
+    "Xft.lcdfilter" = "lcddefault";
+    "Xft.hintstyle" = "hintslight";
+    "Xft.hinting" = 1;
+    "Xft.antialias" = 1;
+    "Xft.rgba" = "rgb";
+    "*font" = "xft:Fira Code 14";
+    "*alpha" = "0.9";
+    "antialias" = true;
+    "autohint" = true;
+    "*.cursorColor" = "#25c3dc";
+    "*.pointerColor" = #25c3dc";
+    "*.foreground" = "#f2f2f2";
+    "*.background" = "#1C1C1C";
+    "*.color0" = "#2c2c2c";
+    "*.color8" = "#969694";
+    "*.color1" = "#c62828";
+    "*.color9" = "#f15250";
+    "*.color2" = "#558b2ek";
+    "*.color10" = "#86bd47";
+    "*.color3" = "#f9a825";
+    "*.color11" = "#f8e63a";
+    "*.color4" = "#1565c1";
+    "*.color12" = "#77b2f6";
+    "*.color5" = "#6a1e9a";
+    "*.color13" = "#b963c8";
+    "*.color6" = "#00838f";
+    "*.color14" = "#25c3dc";
+    "*.color7" = "#ffffff";
+    "*.color15" = "#ffffff";
+    
+  };
 }
