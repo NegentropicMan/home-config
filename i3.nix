@@ -75,9 +75,7 @@ bindsym $alt+space exec rofi -lines 12 -padding 18 -width 60 -location 0 -show d
           "${mod}+Shift+r" = "restart";
           "${mod}+q" = "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'";
         };
-        bars = [lib.mkOptionDefault {
-          fonts = ["FiraCode 12"];
-        };]
+        bars = [ lib.mkOptionDefault {fonts = ["FiraCode 12"];}; ];
       };
     };
   };
