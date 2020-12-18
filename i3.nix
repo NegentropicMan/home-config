@@ -61,9 +61,9 @@ in {
         gaps.smartGaps = "on";
         gaps.smartBorders = "on";
         startup = [
-          {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false}
-          {command = "xsettingsd";notification = false}
-          {command = "picom  -bcCGf -i 0.7 -e 0.9"; notification = false}
+          {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false;}
+          {command = "xsettingsd";notification = false;}
+          {command = "picom  -bcCGf -i 0.7 -e 0.9"; notification = false;}
         ];
       };
     };
