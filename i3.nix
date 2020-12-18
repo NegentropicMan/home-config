@@ -14,7 +14,6 @@ in {
   ];
   
   home.sessionVariables = {
-    TERMINAL = "st -f FiraCode Nerd Font:pixelsize=12";
     browser = "firefox";
   };
   xsession = {
@@ -75,6 +74,9 @@ bindsym $alt+space exec rofi -lines 12 -padding 18 -width 60 -location 0 -show d
           "${mod}+c" = "kill";
           "${mod}+Shift+r" = "restart";
           "${mod}+q" = "i3-nagbar -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'";
+        };
+        bars = lib.mkOptionDefault {
+          fonts = ["FiraCode 12"];
         };
       };
     };
