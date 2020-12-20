@@ -71,8 +71,7 @@ in {
         ];
         keybindings = lib.mkOptionDefault {
           "${mod}+Return" = "exec st -f 'FiraCode:size=14:autohint=true:antialias=true'"; # FantasqueSansMono
-          "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -matching fuzzy
-bindsym $alt+space exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3";
+          "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -matching fuzzy";
           "${mod}+c" = "kill";
           "${mod}+Shift+r" = "restart";
           "${mod}+q" = ''i3-nagbar -t warning -m "Really, exit?" -b "Yes" "i3-msg exit"'';
