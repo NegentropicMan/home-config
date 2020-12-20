@@ -12,12 +12,14 @@
     ./git.nix
     ./shells.nix
     ./nvim.nix
-    ./i3.nix
-#    ./gnome.nix
+#    ./i3.nix
+    ./gnome.nix
     ./firefox.nix
+    ./vscode.nix
   ];
   
   home.packages = with pkgs; [
+    nix-prefetch-git
   ];
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

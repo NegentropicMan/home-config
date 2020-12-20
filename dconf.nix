@@ -6,8 +6,22 @@ let
 in
 {
   dconf.settings = {
+    "org/gnome/Geary" = {
+      "folder-list-pane-position-horizontal" = 100;
+      "messages-pane-position" = 351;
+      "migrated-config" = true;
+    };
+
     "org/gnome/control-center" = {
       "last-panel" = "color";
+    };
+
+    "org/gnome/desktop/background" = {
+      "color-shading-type" = "solid";
+      "picture-options" = "zoom";
+      "picture-uri" = "file:///home/fschmitz/.local/share/backgrounds/2020-12-20-21-24-34-microcircuit_circuit_bw_126894_4752x3168.jpg";
+      "primary-color" = "#000000000000";
+      "secondary-color" = "#000000000000";
     };
 
     "org/gnome/desktop/input-sources" = {
@@ -32,7 +46,7 @@ in
 
     "org/gnome/desktop/peripherals/mouse" = {
       "left-handed" = true;
-      "speed" = -0.6691176470588236;
+      "speed" = -0.669118;
     };
 
     "org/gnome/desktop/peripherals/touchpad" = {
@@ -43,8 +57,21 @@ in
       "report-technical-problems" = true;
     };
 
+    "org/gnome/desktop/screensaver" = {
+      "color-shading-type" = "solid";
+      "picture-options" = "zoom";
+      "picture-uri" = "file:///home/fschmitz/.local/share/backgrounds/2020-12-20-21-24-34-microcircuit_circuit_bw_126894_4752x3168.jpg";
+      "primary-color" = "#000000000000";
+      "secondary-color" = "#000000000000";
+    };
+
     "org/gnome/desktop/session" = {
       "idle-delay" = "uint32 900";
+    };
+
+    "org/gnome/desktop/sound" = {
+      "event-sounds" = true;
+      "theme-name" = "__custom";
     };
 
     "org/gnome/evolution-data-server" = {
@@ -82,6 +109,21 @@ in
       "workspaces-only-on-primary" = true;
     };
 
+    "org/gnome/nautilus/preferences" = {
+      "default-folder-viewer" = "icon-view";
+      "search-filter-time-type" = "last_modified";
+    };
+
+    "org/gnome/nautilus/window-state" = {
+      "initial-size" = mkTuple [ 890 550 ];
+      "maximized" = false;
+    };
+
+    "org/gnome/settings-daemon/plugins/color" = {
+      "night-light-enabled" = true;
+      "night-light-temperature" = "uint32 3169";
+    };
+
     "org/gnome/settings-daemon/plugins/power" = {
       "idle-dim" = true;
       "power-button-action" = "interactive";
@@ -103,6 +145,32 @@ in
 
     "org/gnome/system/location" = {
       "enabled" = false;
+    };
+
+    "org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9" = {
+      "background-color" = "rgb(238,238,236)";
+      "bold-is-bright" = false;
+      "cursor-shape" = "block";
+      "font" = "Fira Code Medium 12";
+      "foreground-color" = "rgb(46,52,54)";
+      "palette" = [ "rgb(0,0,0)" "rgb(205,0,0)" "rgb(0,205,0)" "rgb(205,205,0)" "rgb(0,0,205)" "rgb(205,0,205)" "rgb(0,205,205)" "rgb(250,235,215)" "rgb(64,64,64)" "rgb(255,0,0)" "rgb(0,255,0)" "rgb(255,255,0)" "rgb(0,0,255)" "rgb(255,0,255)" "rgb(0,255,255)" "rgb(255,255,255)" ];
+      "use-system-font" = false;
+      "use-theme-colors" = true;
+    };
+
+    "org/gtk/settings/file-chooser" = {
+      "date-format" = "regular";
+      "location-mode" = "path-bar";
+      "show-hidden" = true;
+      "show-size-column" = true;
+      "show-type-column" = true;
+      "sidebar-width" = 158;
+      "sort-column" = "name";
+      "sort-directories-first" = false;
+      "sort-order" = "ascending";
+      "type-format" = "category";
+      "window-position" = mkTuple [ 26 23 ];
+      "window-size" = mkTuple [ 1369 902 ];
     };
 
   };

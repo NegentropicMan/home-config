@@ -13,4 +13,9 @@
     gnomeExtensions.dash-to-dock
   ];
   
+  programs.alacritty = {
+    enable = true;
+    settings = {
+    };
+  };
 }
