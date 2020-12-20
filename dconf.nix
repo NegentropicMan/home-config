@@ -13,7 +13,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      "last-panel" = "color";
+      "last-panel" = "user-accounts";
     };
 
     "org/gnome/desktop/background" = {
@@ -33,11 +33,17 @@ in
     "org/gnome/desktop/interface" = {
       "clock-show-weekday" = true;
       "gtk-im-module" = "gtk-im-context-simple";
+      "gtk-theme" = "Adwaita-dark";
+      "icon-theme" = "Adwaita";
       "show-battery-percentage" = true;
     };
 
     "org/gnome/desktop/notifications" = {
-      "application-children" = [ "gnome-power-panel" ];
+      "application-children" = [ "gnome-power-panel" "firefox" ];
+    };
+
+    "org/gnome/desktop/notifications/application/firefox" = {
+      "application-id" = "firefox.desktop";
     };
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
@@ -72,6 +78,10 @@ in
     "org/gnome/desktop/sound" = {
       "event-sounds" = true;
       "theme-name" = "__custom";
+    };
+
+    "org/gnome/desktop/wm/preferences" = {
+      "button-layout" = "appmenu:maximize,close";
     };
 
     "org/gnome/evolution-data-server" = {
@@ -136,7 +146,20 @@ in
     };
 
     "org/gnome/shell" = {
-      "enabled-extensions" = "@as []";
+      "enabled-extensions" = [ "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" ];
+    };
+
+    "org/gnome/shell/extensions/dash-to-dock" = {
+      "apply-custom-theme" = false;
+      "custom-theme-shrink" = false;
+      "dock-position" = "BOTTOM";
+      "extend-height" = false;
+      "force-straight-corner" = false;
+      "running-indicator-style" = "DEFAULT";
+      "show-favorites" = false;
+      "show-show-apps-button" = true;
+      "show-trash" = false;
+      "show-windows-preview" = true;
     };
 
     "org/gnome/shell/world-clocks" = {
