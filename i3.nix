@@ -4,20 +4,78 @@ let
   mod = "Mod4";
   focus = "#AA0605";
   unfocus = "#F0EDEC";
+
+  rofi-script-to-dmenu = pkgs.stdenv.mkDerivation rec {
+    pname = "rofi-script-to-dmenu";
+    version = "1.1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "jluttine";
+      repo = pname;
+      rev = version;
+      sha256 = "0fgyc5kaw1784lqdfj1w995imh2c5x7fvvmh4ll120963zc78pg6";
+    };
+    buildPhase = "";
+    installPhase = ''
+      install -Dm755 rofi-script-to-dmenu $out/bin/rofi-script-to-dmenu
+    '';
+  };
+
+  rofi-power-menu = pkgs.stdenv.mkDerivation rec {
+    pname = "rofi-power-menu";
+    version = "3.0.1";
+    src = pkgs.fetchFromGitHub {
+      owner = "jluttine";
+      repo = pname;
+      rev = version;
+      sha256 = "1kab1wabm5h73rj5p3114frjb7f1iqli89kfddrhp8z0n8348jw9";
+    };
+    buildPhase = "";
+    installPhase = ''
+      install -Dm755 rofi-power-menu $out/bin/rofi-power-menu
+      install -Dm755 dmenu-power-menu $out/bin/dmenu-power-menu
+    '';
+  };
+
 in {
   imports = [
   ];
   home.packages = with pkgs; [
+    rofi-power-menu
+    rofi-script-to-dmenu 
+    dunst
+    libnotify
+    dex
+    alacritty
+    hsetroot
+    autorandr
+    sxiv
+    mupdf
+    luakit
+    arandr
+    udiskie
+    networkmanagerapplet
     dmenu
     st
     feh
     picom
-    rofi
+    (rofi.override {
+      plugins = [ rofi-file-browser ];
+    })
+    (polybar.override {
+      i3Support = true;
+      pulseSupport = true;
+      nlSupport = false;
+      iwSupport = true;
+      wirelesstools = wirelesstools;
+      #githubSupport = true;
+      #mpdSupport = true;
+    })
   ];
 
   home.sessionVariables = {
     browser = "firefox";
   };
+
   xsession = {
      enable = true;
      windowManager.i3 = {

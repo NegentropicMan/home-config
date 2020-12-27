@@ -7,7 +7,7 @@
 #  services.gnome3.chrome-gnome-shell.enable = true;
   programs.firefox = {
     enable = true;
-    enableGnomeExtensions = true;
+    enableGnomeExtensions = false;
     extensions = [
     ];
   };
