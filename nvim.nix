@@ -35,9 +35,13 @@ in
       vimdiffAlias = true;
       extraConfig = ''
         set relativenumber
+	" If this is too cumbersome, use "*(y/p) to use the system clipboard
+	set clipboard=unnamedplus
         colorscheme PaperColor
+	set bg=light
         set nobackup
         set showcmd
+	set nowrap
         let mapleader=","
         nnoremap <Leader>s :SemanticHighlightToggle<cr>
       '';

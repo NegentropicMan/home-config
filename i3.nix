@@ -2,8 +2,9 @@
 
 let
   mod = "Mod4";
-  focus = "#AA0605";
-  unfocus = "#F0EDEC";
+  focus = "#D75F00";
+  unfocus = "#EEEEEE";
+  dotfileDir = ./dotfiles;
 
   rofi-script-to-dmenu = pkgs.stdenv.mkDerivation rec {
     pname = "rofi-script-to-dmenu";
@@ -40,51 +41,95 @@ in {
   imports = [
   ];
   home.packages = with pkgs; [
+    clipmenu
     rofi-power-menu
     rofi-script-to-dmenu 
-    dunst
     libnotify
     dex
     alacritty
     hsetroot
-    autorandr
     sxiv
     mupdf
     luakit
     arandr
-    udiskie
     networkmanagerapplet
     dmenu
-    st
+    (st.overrideAttrs (oldAttrs: rec {
+      # ligatures dependency
+      buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
+      patches = [
+       # ligatures patch
+       (fetchpatch {
+         url = "https://st.suckless.org/patches/ligatures/0.8.3/st-ligatures-20200430-0.8.3.diff";
+         sha256 = "18fllssg5d5gik1x0ppz232vdphr0y2j5z8lhs5j9zjs8m9ria5w";
+       })
+      ];
+      # Use a local configuration header
+      configFile = writeText "config.def.h" (builtins.readFile ./config.def.h);
+      postPatch = oldAttrs.postPatch + ''cp ${configFile} config.def.h'';
+    }))
     feh
     picom
     (rofi.override {
-      plugins = [ rofi-file-browser ];
-    })
-    (polybar.override {
-      i3Support = true;
-      pulseSupport = true;
-      nlSupport = false;
-      iwSupport = true;
-      wirelesstools = wirelesstools;
-      #githubSupport = true;
-      #mpdSupport = true;
+      plugins = [ rofi-file-browser rofi-power-menu ];
     })
   ];
 
-  home.sessionVariables = {
-    browser = "firefox";
+  programs.autorandr.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+	follow = "mouse";
+	geometry = "0x5-30+20";
+	indicate_hidden = "yes";
+	frame_color = "#aaaaaa";
+	separator_color = "auto";
+	font = "Fira Code 12";
+	startup_notification = true;
+	format = "<b>%s</b>\n%b";
+      };
+      urgency_low = {
+	background = "#EEEEEE";
+	foreground = "#BCBCBC";
+      };
+      urgency_normal = {
+	background = "#EEEEEE";
+	foreground = "#878787";
+      };
+      urgency_critical = {
+	background = "#EEEEEE";
+	foreground = "#D70000";
+      };
+    };
+  };
+  services.udiskie = {
+    enable = true;
+    automount = true;
+    notify = true;
+    tray = "auto";
   };
 
+  programs.i3status = {
+    enable = true;
+    enableDefault = true;
+
+  };
+
+  home.sessionVariables = {
+    BROWSER = "firefox";
+    CM_LAUNCHER = "rofi";
+  };
+  
   xsession = {
      enable = true;
      windowManager.i3 = {
-      enable = true;
-      package = pkgs.i3-gaps;
-      config = {
-        modifier = mod;
+       enable = true;
+       package = pkgs.i3-gaps;
+       config = {
+	modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
-        fonts = ["FiraCode 12"];
+        fonts = ["Fira Code 12"];
         colors = {
             focused = {
               border = focus;
@@ -124,19 +169,32 @@ in {
         gaps.smartBorders = "on";
         startup = [
           {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false;}
-          {command = "xsettingsd";notification = false;}
-          {command = "picom  -bcCGf -i 0.7 -e 0.9"; notification = false;}
+          {command = "xsettingsd"; notification = false;}
+          {command = "autorandr --change"; notification = false; always = true;}
+          {command = "clipmenud"; notification = false;}
+          {command = "picom -bcCGf -i 0.7 -e 0.9"; notification = false;}
+          #{command = "dunst"; notification = false;}
         ];
         keybindings = lib.mkOptionDefault {
-          "${mod}+Return" = "exec st -f 'FiraCode:size=14:autohint=true:antialias=true'"; # FantasqueSansMono
-          "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -matching fuzzy";
+          "${mod}+Return" = "exec st -f 'FiraCode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
+          "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
+          "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
           "${mod}+c" = "kill";
           "${mod}+Shift+r" = "restart";
-          "${mod}+q" = ''i3-nagbar -t warning -m "Really, exit?" -b "Yes" "i3-msg exit"'';
+          "${mod}+Home" = "exec xdg-open $HOME";
+          "${mod}+q" = "exec i3-nagbar -f 'xft:FiraCode 12' -t warning -m 'Really, exit?' -b 'Yes' 'i3-msg exit'";
+	  "${mod}+h" = "focus left";
+	  "${mod}+j" = "focus down";
+	  "${mod}+k" = "focus up";
+	  "${mod}+l" = "focus right";
+	  "${mod}+Shift+h" = "move left";
+	  "${mod}+Shift+j" = "move down";
+	  "${mod}+Shift+k" = "move up";
+	  "${mod}+Shift+l" = "move right";
         };
         bars = [ {fonts = ["FiraCode 12"]; statusCommand = "i3status";} ];
-      };
-    };
+       };
+     };
   };
   
   xresources.properties = {
@@ -146,7 +204,7 @@ in {
     "Xft.hinting" = 1;
     "Xft.antialias" = 1;
     "Xft.rgba" = "rgb";
-    "*font" = "xft:Fira Code 14";
+    "*font" = "xft:Fira Code 12";
     "*alpha" = "0.9";
     "antialias" = true;
     "autohint" = true;
@@ -156,19 +214,19 @@ in {
     "*.background" = "#1C1C1C";
     "*.color0" = "#2c2c2c";
     "*.color8" = "#969694";
-    "*.color1" = "#c62828";
-    "*.color9" = "#f15250";
-    "*.color2" = "#558b2ek";
-    "*.color10" = "#86bd47";
-    "*.color3" = "#f9a825";
-    "*.color11" = "#f8e63a";
-    "*.color4" = "#1565c1";
-    "*.color12" = "#77b2f6";
-    "*.color5" = "#6a1e9a";
-    "*.color13" = "#b963c8";
-    "*.color6" = "#00838f";
-    "*.color14" = "#25c3dc";
-    "*.color7" = "#ffffff";
-    "*.color15" = "#ffffff";
+    "*.color1" = "#D7005F";
+    "*.color9" = "#D7005F";
+    "*.color2" = "#718C00";
+    "*.color10" = "#718C00";
+    "*.color3" = "#D75F00";
+    "*.color11" = "#D75F00";
+    "*.color4" = "#4271AE";
+    "*.color12" = "#4271AE";
+    "*.color5" = "#8959A8";
+    "*.color13" = "#8959A8";
+    "*.color6" = "#3E999F";
+    "*.color14" = "#3E999F";
+    "*.color7" = "#4D4D4C";
+    "*.color15" = "#F5F5F5";
   };
 }

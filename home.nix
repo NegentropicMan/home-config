@@ -17,11 +17,16 @@
     ./firefox.nix
     ./vscode.nix
   ];
+
+  programs.tmux = {
+    enable = true;
+    shortcut = "a";
+  };
   
   home.packages = with pkgs; [
     nix-prefetch-git
     stress
-    guake
+    
   ];
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
