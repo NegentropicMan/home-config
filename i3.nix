@@ -42,6 +42,7 @@ in {
   ];
   home.packages = with pkgs; [
     clipmenu
+    autotiling
     rofi-power-menu
     rofi-script-to-dmenu 
     libnotify
@@ -65,10 +66,10 @@ in {
        })
       ];
       # Use a local configuration header
-      configFile = writeText "config.def.h" (builtins.readFile ./config.def.h);
+      configFile = writeText "config.def.h" (builtins.readFile ./st/config.def.h);
       postPatch = oldAttrs.postPatch + ''cp ${configFile} config.def.h'';
     }))
-    feh
+    # feh
     picom
     (rofi.override {
       plugins = [ rofi-file-browser rofi-power-menu ];
@@ -112,8 +113,63 @@ in {
 
   programs.i3status = {
     enable = true;
-    enableDefault = true;
-
+    enableDefault = false;
+    general = {
+      colors = true;
+      color_good = "#0087af";
+      color_degraded = "#d75f00";
+      color_bad = "#d70000";
+      interval = 1;
+    };
+    
+    modules = {
+      "battery all" = {
+	position = 1;
+	settings = {
+	  format = "%status %percentage %remaining";
+	};
+      };
+      "ethernet _first_" = {
+	position = 2;
+	settings = {
+	  format_down = "E: down";
+	  format_up = "E: %ip (%speed)";
+	};
+      };
+      "wireless _first_" = {
+	position = 3;
+	settings = {
+	  format_down = "W: down";
+	  format_up = "W: (%quality at %essid) %ip";
+	};
+      };
+      "load" = {
+	position = 4;
+	settings = {
+	  format = "%1min";
+	};
+      };
+      "memory" = {
+	position = 5;
+	settings = {
+	  format = "%used | %available";
+          format_degraded = "MEMORY < %available";
+          threshold_degraded = "1G";
+	};
+      };
+      "tztime local" = {
+	position = 6;
+	settings = {
+	  format = "%Y-%m-%d %H:%M";
+	};
+      };
+      "disk /" = {
+	position = 7;
+	settings = {
+	  format = "%avail";
+	};
+      };
+    };
   };
 
   home.sessionVariables = {
@@ -168,8 +224,9 @@ in {
         gaps.smartGaps = true;
         gaps.smartBorders = "on";
         startup = [
-          {command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false;}
+          #{command = "feh --bg-scale ~/.wallpaper.jpg"; notification = false;}
           {command = "xsettingsd"; notification = false;}
+          {command = "autotiling"; notification = false;}
           {command = "autorandr --change"; notification = false; always = true;}
           {command = "clipmenud"; notification = false;}
           {command = "picom -bcCGf -i 0.7 -e 0.9"; notification = false;}
@@ -192,7 +249,18 @@ in {
 	  "${mod}+Shift+k" = "move up";
 	  "${mod}+Shift+l" = "move right";
         };
-        bars = [ {fonts = ["FiraCode 12"]; statusCommand = "i3status";} ];
+        bars = [ 
+	  {
+	    fonts = ["FiraCode 12"];
+	    statusCommand = "i3status";
+
+	    colors = {
+	      background = "#eeeeee";
+	      statusline = "#444444";
+	      separator = "#444444";
+	    };
+	  }
+	];
        };
      };
   };

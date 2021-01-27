@@ -12,6 +12,7 @@ let
     ".." = "cd ..";
     "a.sharetext" = "curl -F 'f:1=<-' ix.io";
     "a.weather" = "curl wttr.in/Nürnberg";
+    nix-upgrade = "sudo nixos-rebuild switch --upgrade";
   };
 in
 {

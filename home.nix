@@ -4,16 +4,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
   imports = [
-#    ./machine/pi.nix
-#    ./role/remoteenv.nix
-#    ./role/devmachine.nix
     ./user/fschmitz.nix
     ./fonts.nix
     ./git.nix
     ./shells.nix
     ./nvim.nix
-    ./i3.nix
-    ./gnome.nix
+    #./i3.nix
+    ./sway.nix
     ./firefox.nix
     ./vscode.nix
   ];
@@ -25,8 +22,13 @@
   
   home.packages = with pkgs; [
     nix-prefetch-git
+    nix-index
     stress
-    
+    mudlet    
+    mupdf
+    mpd
+    cantata
+    dropbox
   ];
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

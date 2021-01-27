@@ -36,13 +36,14 @@ in
       extraConfig = ''
         set relativenumber
 	" If this is too cumbersome, use "*(y/p) to use the system clipboard
-	set clipboard=unnamedplus
+	" set clipboard=unnamedplus
         colorscheme PaperColor
-	set bg=light
+	set bg=dark
         set nobackup
         set showcmd
 	set nowrap
         let mapleader=","
+	set wildmenu " Shows an extended menu for command expansion
         nnoremap <Leader>s :SemanticHighlightToggle<cr>
       '';
 
