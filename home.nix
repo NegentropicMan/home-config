@@ -33,6 +33,7 @@ in
     cantata
     dropbox
     lshw
+    vis
   ];
 
   services.mpd = {
