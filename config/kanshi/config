@@ -1,0 +1,12 @@
+profile Docked {
+	output LVDS-1 mode 1280x800 position 0,800
+	output "Unknown HP X27i CNK0181PLV" mode 1920x1200 position 1280,0 
+}
+
+profile DockedAndLidClosed {
+	output "Unknown HP X27i CNK0181PLV" mode 1920x1200 position 0,0
+}
+
+profile Undocked {
+	output LVDS-1 mode 1280x800 position 0,0
+}

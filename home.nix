@@ -1,5 +1,7 @@
 { config, pkgs, ... }:
-
+let
+  format_udf = pkgs.callPackage ./format-udf.nix {};
+in
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -21,15 +23,28 @@
   };
   
   home.packages = with pkgs; [
+    format_udf
     nix-prefetch-git
     nix-index
+    nox
     stress
     mudlet    
     mupdf
-    mpd
     cantata
     dropbox
+    lshw
   ];
+
+  services.mpd = {
+    enable = true;
+    musicDirectory = "/home/fschmitz/Music";
+    extraConfig = ''
+      audio_output {
+        type "pulse" # MPD must use Pulseaudio
+	name "Pulseaudio" # Whatever you want
+      }
+      '';   
+  };
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

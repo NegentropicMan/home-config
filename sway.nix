@@ -20,7 +20,12 @@ in {
     waybar
     wl-clipboard
     wofi # dmenu replacement
-    xfce.thunar
+    mate.caja-with-extensions # File manager
+    xdg_utils # For using xdg_open
+    udiskie
+    hicolor_icon_theme
+    wallutils # Wallpaper setter
+    imv # Image viewer
   ];
 
   services.udiskie = {
@@ -29,6 +34,8 @@ in {
     notify = true;
     tray = "auto";
   };
+
+  fonts.fontconfig.enable = true;
 
   home.sessionVariables = {
     BROWSER = "firefox";
@@ -55,6 +62,16 @@ in {
       source = ./config/mako;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
+    FlashFocusConfig = {
+      target = "./flashfocus";
+      source = ./config/flashfocus;
+      recursive = false; # If false, the directory is linked. If true, the files are linked
+    };
+    KanshiConfig = {
+      target = "./kanshi";
+      source = ./config/kanshi;
+      recursive = false; # If false, the directory is linked. If true, the files are linked
+    };
   };
   
   wayland = {
@@ -66,10 +83,16 @@ in {
 	  "type:keyboard" = {
 	    "xkb_layout" = "de";
 	    "xkb_variant" = "nodeadkeys";
+	    "xkb_options" = "ctrl:nocaps";
 	  };
 	};
 	startup = [
 	  { command = "dropbox"; } 
+	  { command = "kanshi"; } 
+	  { command = "autotiling"; } 
+	  { command = "flashfocus"; } 
+	  { command = "udiskie --appindicator -t"; } 
+	  { command = "setrandom -m scale ~/Wallpapers"; } 
 	];
 	terminal = ''foot --font="Fira Code:size=10"'';
 	menu = "wofi --show drun";
@@ -124,7 +147,7 @@ in {
         bars = [ 
 	  {
 	    command = "waybar";
-	    fonts = [ "Fira Code:size=14" ];
+	    fonts = [ "pango:Fira Code:size=14" ];
 	  }
 	];
        };
