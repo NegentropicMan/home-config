@@ -36,6 +36,8 @@ in
     vis
   ];
 
+  home.sessionVariables.EDITOR = "vis";
+
   services.mpd = {
     enable = true;
     musicDirectory = "/home/fschmitz/Music";

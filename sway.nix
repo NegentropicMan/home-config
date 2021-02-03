@@ -8,6 +8,7 @@ in {
   imports = [
   ];
   home.packages = with pkgs; [
+    arduino
     autotiling # toggle between horizontal and vertical tiling (spiral)
     flashfocus
     foot #Terminal emulator
@@ -84,6 +85,9 @@ in {
 	    "xkb_layout" = "de";
 	    "xkb_variant" = "nodeadkeys";
 	    "xkb_options" = "ctrl:nocaps";
+	  };
+	  "type:mouse" = {
+	    "left_handed" = "enabled";
 	  };
 	};
 	startup = [
