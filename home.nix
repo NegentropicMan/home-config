@@ -37,6 +37,7 @@ in
   ];
 
   home.sessionVariables.EDITOR = "vis";
+  home.sessionVariables."_JAVA_AWT_WM_NONREPARENTING" = "1"; # For Java/AWT programs which do not like wayland
 
   services.mpd = {
     enable = true;

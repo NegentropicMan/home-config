@@ -5,6 +5,7 @@ let
   focus = "#D75F00";
   unfocus = "#EEEEEE";
 in {
+
   imports = [
   ];
   home.packages = with pkgs; [
@@ -86,7 +87,7 @@ in {
 	    "xkb_variant" = "nodeadkeys";
 	    "xkb_options" = "ctrl:nocaps";
 	  };
-	  "type:mouse" = {
+	  "type:pointer" = {
 	    "left_handed" = "enabled";
 	  };
 	};
@@ -145,7 +146,6 @@ in {
         #  "${mod}+Return" = "exec st -f 'FiraCode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
         #  "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
         #  "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
-        #  "${mod}+c" = "kill";
         #  "${mod}+Shift+r" = "restart";
         };
         bars = [ 

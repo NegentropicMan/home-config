@@ -28,6 +28,12 @@ in
     enableFishIntegration = true;
   };
 
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+  };
+
   programs.fish = {
     enable = true;
     inherit shellAliases;
