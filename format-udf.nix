@@ -1,5 +1,5 @@
 with import <nixpkgs> {};
-{ stdenv }:
+{ stdenv, utillinux, libblockdev, udftools }:
 stdenv.mkDerivation rec {
   # String interpolation to include the version number in the name
   # Including a version in the name is idiomatic
@@ -21,8 +21,15 @@ stdenv.mkDerivation rec {
     # Make the output directory
     mkdir -p $out/bin
 
+    substituteInPlace ./format-udf.sh \
+      --replace mkudffs ${udftools}/bin/mkudffs \
+      --replace lsblk ${utillinux}/bin/lsblk
     # Copy the script and make it executable
-    cp format-udf.sh $out/bin
+    cp ./format-udf.sh $out/bin
     chmod +x $out/bin/format-udf.sh
   '';
+
+  #postInstall = ''
+  #  makeWrapper $out/bin/format-udf.sh --prefix PATH : ${lib.makeBinPath [ udftools libblockdev ]}
+  #'';
 }

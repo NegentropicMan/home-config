@@ -9,6 +9,17 @@ in {
   imports = [
   ];
   home.packages = with pkgs; [
+    (st.overrideAttrs (oldAttrs: rec {
+      # ligatures dependency
+      buildInputs = oldAttrs.buildInputs ++ [ harfbuzz ];
+      patches = [
+       # ligatures patch
+       (fetchpatch {
+         url = "https://st.suckless.org/patches/ligatures/0.8.3/st-ligatures-20200430-0.8.3.diff";
+         sha256 = "18fllssg5d5gik1x0ppz232vdphr0y2j5z8lhs5j9zjs8m9ria5w";
+       })
+      ];
+    })) 
     arduino
     autotiling # toggle between horizontal and vertical tiling (spiral)
     flashfocus
@@ -99,11 +110,11 @@ in {
 	  { command = "udiskie --appindicator -t"; } 
 	  { command = "setrandom -m scale ~/Wallpapers"; } 
 	];
-	terminal = ''foot --font="Fira Code:size=10"'';
+	terminal = ''st -f "APL385 Unicode:size=12:autohint=true:antialias=true"'';
 	menu = "wofi --show drun";
 	modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
-        fonts = ["Fira Code:size=10"];
+        fonts = ["APL385 Unicode:size=10"];
         colors = {
             focused = {
               border = focus;
@@ -143,7 +154,7 @@ in {
         gaps.smartBorders = "on";
 
         keybindings = lib.mkOptionDefault {
-        #  "${mod}+Return" = "exec st -f 'FiraCode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
+        #  "${mod}+Return" = "exec st -f 'APL385 Unicode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
         #  "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
         #  "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
         #  "${mod}+Shift+r" = "restart";
@@ -151,7 +162,7 @@ in {
         bars = [ 
 	  {
 	    command = "waybar";
-	    fonts = [ "pango:Fira Code:size=14" ];
+	    fonts = [ "pango:APL385 Unicode:size=14" ];
 	  }
 	];
        };
