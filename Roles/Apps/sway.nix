@@ -110,11 +110,11 @@ in {
 	  { command = "udiskie --appindicator -t"; } 
 	  { command = "setrandom -m scale ~/Wallpapers"; } 
 	];
-	terminal = ''st -f "APL385 Unicode:size=12:autohint=true:antialias=true"'';
+	terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
 	menu = "wofi --show drun";
 	modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
-        fonts = ["APL385 Unicode:size=10"];
+        fonts = ["APL386 Unicode:size=10"];
         colors = {
             focused = {
               border = focus;
@@ -154,7 +154,7 @@ in {
         gaps.smartBorders = "on";
 
         keybindings = lib.mkOptionDefault {
-        #  "${mod}+Return" = "exec st -f 'APL385 Unicode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
+        #  "${mod}+Return" = "exec st -f 'APL386 Unicode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
         #  "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
         #  "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
         #  "${mod}+Shift+r" = "restart";
@@ -162,7 +162,7 @@ in {
         bars = [ 
 	  {
 	    command = "waybar";
-	    fonts = [ "pango:APL385 Unicode:size=14" ];
+	    fonts = [ "pango:APL386 Unicode:size=14" ];
 	  }
 	];
        };
