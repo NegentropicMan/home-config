@@ -23,6 +23,12 @@ in
     lshw
     vis
   ];
+  xdg.configFile = {
+    VisConfig = {
+      target = "./vis";
+      source = ./config/vis;
+    };
+  };
 
   home.sessionVariables.EDITOR = "vis";
 
