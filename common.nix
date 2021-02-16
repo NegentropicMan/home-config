@@ -1,12 +1,13 @@
 { config, pkgs, ... }:
 let
-  format_udf = pkgs.callPackage ./format-udf.nix {};
+  #format_udf = pkgs.callPackage ./format-udf.nix {};
 in
 {
   imports = [
     ./git.nix
     ./shells.nix
     ./nvim.nix
+    ./format-udf.nix
   ];
 
   programs.tmux = {
@@ -15,7 +16,7 @@ in
   };
 
   home.packages = with pkgs; [
-    format_udf
+    #format-udf
     nix-prefetch-git
     nix-index
     nox

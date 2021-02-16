@@ -94,17 +94,22 @@ in {
      windowManager.sway = {
        enable = true;
        wrapperFeatures.gtk = true;
+       extraConfig = ''
+         set $laptop LVDS-1
+         bindswitch --reload --locked lid:on output $laptop disable
+         bindswitch --reload --locked lid:off output $laptop enable
+       '';
        config = {
         input = {
-      "type:keyboard" = {
-        "xkb_layout" = "de";
-        "xkb_variant" = "nodeadkeys";
-        "xkb_options" = "ctrl:nocaps";
-      };
-      "type:pointer" = {
-        "left_handed" = "enabled";
-      };
-    };
+          "type:keyboard" = {
+            "xkb_layout" = "de";
+            "xkb_variant" = "nodeadkeys";
+            "xkb_options" = "ctrl:nocaps";
+          };
+          "type:pointer" = {
+            "left_handed" = "enabled";
+          };
+       };
     startup = [
       { command = "dropbox"; } 
       { command = "inactive-windows-transparency.py -o 0.7"; } 
@@ -114,7 +119,8 @@ in {
       { command = "udiskie --appindicator -t"; } 
       { command = "setrandom -m scale ~/Wallpapers"; } 
     ];
-    terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
+    #terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
+    terminal = ''foot -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
     menu = "wofi --show drun";
     modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
@@ -158,17 +164,17 @@ in {
         gaps.smartBorders = "on";
 
         keybindings = lib.mkOptionDefault {
-        #  "${mod}+Return" = "exec st -f 'APL386 Unicode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
-        #  "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
-        #  "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
-        #  "${mod}+Shift+r" = "restart";
+          #  "${mod}+Return" = "exec st -f 'APL386 Unicode:size=12:autohint=true:antialias=true' -e tmux"; # FantasqueSansMono
+          #  "${mod}+v" = "exec clipmenu -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
+          #  "${mod}+d" = "exec rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -show-icons -sidebar-mode -columns 3 -matching fuzzy";
+          #  "${mod}+Shift+r" = "restart";
         };
         bars = [ 
-      {
-        command = "waybar";
-        fonts = [ "pango:APL386 Unicode:size=14" ];
-      }
-    ];
+          {
+            command = "waybar";
+            fonts = [ "pango:APL386 Unicode:size=14" ];
+          }
+        ];
        };
      };
   };

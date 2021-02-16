@@ -1,6 +1,8 @@
 with import <nixpkgs> {};
-{ stdenv, utillinux, libblockdev, udftools }:
-stdenv.mkDerivation rec {
+
+{ config, pkgs, options, ... } :
+let
+  format-udf = stdenv.mkDerivation rec {
   # String interpolation to include the version number in the name
   # Including a version in the name is idiomatic
   pname = "format-udf";
@@ -28,8 +30,8 @@ stdenv.mkDerivation rec {
     cp ./format-udf.sh $out/bin
     chmod +x $out/bin/format-udf.sh
   '';
-
-  #postInstall = ''
-  #  makeWrapper $out/bin/format-udf.sh --prefix PATH : ${lib.makeBinPath [ udftools libblockdev ]}
-  #'';
+  };
+in
+{
+  home.packages = with pkgs; [ libblockdev udftools utillinux format-udf ];
 }
