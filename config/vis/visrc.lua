@@ -1,6 +1,10 @@
 require('vis')
 require('plugins/filetype')
-
+require('vis-filetype-settings/vis-filetype-settings')
+settings = {
+	python = {"set expandtab on", "set tabwidth 4"};
+	nix = {"set expandtab on", "set tabwidth 2"}
+}
 --plugins--
 ----require('plugins/twofinger-surround')
 --require('plugins/vis-commentary/vis-commentary')

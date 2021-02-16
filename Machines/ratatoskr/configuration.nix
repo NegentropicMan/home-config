@@ -11,6 +11,7 @@ let
 
 in 
 {
+  nixpkgs.config.allowUnfree = true;
   imports = [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad>
       <nixos-hardware/common/pc/ssd>

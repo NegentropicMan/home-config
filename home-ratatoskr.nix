@@ -2,6 +2,7 @@
 {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
   imports = [
     ./Users/fschmitz.nix
     ./Roles/graphical.nix

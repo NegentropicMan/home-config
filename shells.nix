@@ -20,6 +20,7 @@ in
     # Programs used by shell config defined below.
     exa
     aria
+    ddate
   ];
 
   programs.broot = {

@@ -23,11 +23,23 @@ in
     lshw
     vis
   ];
-  xdg.configFile = {
+ xdg.configFile = {
     VisConfig = {
-      target = "./vis";
+      target = "vis";
       source = ./config/vis;
+      recursive = true;
     };
+    
+    VisFiletypeSettings = {
+      target = "./vis/vis-filetype-settings"; 
+      source = pkgs.fetchFromGitHub {
+        owner = "jocap";
+        repo = "vis-filetype-settings";  
+        rev = "60f8fa3494d1981ede502f4caf8b471d25de759d";
+        sha256 = "08afr567km7278pjjipykhikink0iqhj8wjj379d2vzsiavjsd27";
+      };
+      recursive = false;
+   };
   };
 
   home.sessionVariables.EDITOR = "vis";
@@ -37,8 +49,8 @@ in
     musicDirectory = "/home/fschmitz/Music";
     extraConfig = ''
       audio_output {
-        type "pulse" # MPD must use Pulseaudio
-	name "Pulseaudio" # Whatever you want
+        type "pulse"  MPD must use Pulseaudio
+        name "Pulseaudio"  Whatever you want
       }
       '';   
   };

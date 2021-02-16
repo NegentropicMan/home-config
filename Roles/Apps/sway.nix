@@ -32,6 +32,7 @@ in {
     swaylock
     waybar
     wl-clipboard
+    sway-contrib.inactive-windows-transparency
     wofi # dmenu replacement
     mate.caja-with-extensions # File manager
     xdg_utils # For using xdg_open
@@ -52,6 +53,8 @@ in {
 
   home.sessionVariables = {
     BROWSER = "firefox";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
   
   xdg.configFile = {
@@ -62,7 +65,7 @@ in {
     NurEinAndererName = {
       target = "./bladir/bla.conf";
       text = ''
-	bla.conf text source
+    bla.conf text source
       '';
     };
     WaybarConfig = {
@@ -93,26 +96,27 @@ in {
        wrapperFeatures.gtk = true;
        config = {
         input = {
-	  "type:keyboard" = {
-	    "xkb_layout" = "de";
-	    "xkb_variant" = "nodeadkeys";
-	    "xkb_options" = "ctrl:nocaps";
-	  };
-	  "type:pointer" = {
-	    "left_handed" = "enabled";
-	  };
-	};
-	startup = [
-	  { command = "dropbox"; } 
-	  { command = "kanshi"; } 
-	  { command = "autotiling"; } 
-	  { command = "flashfocus"; } 
-	  { command = "udiskie --appindicator -t"; } 
-	  { command = "setrandom -m scale ~/Wallpapers"; } 
-	];
-	terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
-	menu = "wofi --show drun";
-	modifier = mod;
+      "type:keyboard" = {
+        "xkb_layout" = "de";
+        "xkb_variant" = "nodeadkeys";
+        "xkb_options" = "ctrl:nocaps";
+      };
+      "type:pointer" = {
+        "left_handed" = "enabled";
+      };
+    };
+    startup = [
+      { command = "dropbox"; } 
+      { command = "inactive-windows-transparency.py -o 0.7"; } 
+      { command = "kanshi"; } 
+      { command = "autotiling"; } 
+      { command = "flashfocus"; } 
+      { command = "udiskie --appindicator -t"; } 
+      { command = "setrandom -m scale ~/Wallpapers"; } 
+    ];
+    terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
+    menu = "wofi --show drun";
+    modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
         fonts = ["APL386 Unicode:size=10"];
         colors = {
@@ -160,11 +164,11 @@ in {
         #  "${mod}+Shift+r" = "restart";
         };
         bars = [ 
-	  {
-	    command = "waybar";
-	    fonts = [ "pango:APL386 Unicode:size=14" ];
-	  }
-	];
+      {
+        command = "waybar";
+        fonts = [ "pango:APL386 Unicode:size=14" ];
+      }
+    ];
        };
      };
   };
