@@ -33,5 +33,5 @@ let
   };
 in
 {
-  home.packages = with pkgs; [ libblockdev udftools utillinux format-udf ];
+  home.packages = with pkgs; [ format-udf ];
 }

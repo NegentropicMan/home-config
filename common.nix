@@ -1,7 +1,4 @@
 { config, pkgs, ... }:
-let
-  #format_udf = pkgs.callPackage ./format-udf.nix {};
-in
 {
   imports = [
     ./git.nix
@@ -16,7 +13,6 @@ in
   };
 
   home.packages = with pkgs; [
-    #format-udf
     nix-prefetch-git
     nix-index
     nox
@@ -24,7 +20,7 @@ in
     lshw
     vis
   ];
- xdg.configFile = {
+  xdg.configFile = {
     VisConfig = {
       target = "vis";
       source = ./config/vis;

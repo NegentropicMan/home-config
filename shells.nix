@@ -51,6 +51,11 @@ in
       . ~/.nix-profile/etc/profile.d/nix.sh;
       export NIX_PATH=$HOME/.nix-defexpr/channels''${NIX_PATH:+:}$NIX_PATH
     fi # added by Nix installer
+
+    # Execute sway on login on tty1
+    if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ]; then
+      exec sway
+    fi
     '';
   };
 

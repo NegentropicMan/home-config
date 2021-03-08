@@ -4,19 +4,15 @@
 
 { config, pkgs, ... }:
 let
-  nixos-thinkpad-dock = builtins.fetchTarball {
-    url="https://github.com/oxzi/nixos-thinkpad-dock/archive/master.tar.gz";
-    sha256 = "17qvgmfm4qli84p3x4db8xrlm0wdcyfvd2jgwarxnkwdf5dkdqy0";
-  };
-
+  TEST = 0;
 in 
 {
   nixpkgs.config.allowUnfree = true;
+
   imports = [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad>
       <nixos-hardware/common/pc/ssd>
       <nixos-hardware/lenovo/thinkpad/tp-smapi.nix>
-      # nixos-thinkpad-dock
       ./hardware-configuration.nix
     ];
   
@@ -126,31 +122,13 @@ in
   #i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "de";
+    keyMap = "us";
   };
 
   # hardware.opengl.driSupport32Bit = true;
   hardware.opengl.driSupport = true;
   
   programs.sway.enable = true;
-  # Options for i3
-  # ---- i3 ----
-  # services.xserver = {
-  #  enable = true;
-  #  layout = "de";
-  #  xkbOptions = "nodeadkeys";
-  #  libinput.enable = true;
-  #  videoDrivers = [ "modesetting" ];
-  #  useGlamor = true;
-  #  desktopManager = {
-  #    xterm.enable = false;
-  #  };
-  #  displayManager.defaultSession = "none+i3";
-  #};
-  
-  #services.xserver.windowManager.i3.enable = true;
-  #services.xserver.windowManager.i3.package = pkgs.i3-gaps;
-  # ---- i3 end ----
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -196,7 +174,7 @@ in
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

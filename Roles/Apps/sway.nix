@@ -40,6 +40,9 @@ in {
     hicolor_icon_theme
     wallutils # Wallpaper setter
     imv # Image viewer
+    pasystray # systray mixer
+    pavucontrol # mixer app
+    libappindicator
   ];
 
   services.udiskie = {
@@ -55,6 +58,7 @@ in {
     BROWSER = "firefox";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
+    XDG_CURRENT_DESKTOP = "unity";
   };
   
   xdg.configFile = {
@@ -88,6 +92,11 @@ in {
       source = ../../config/kanshi;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
+    AutostartSway = {
+      target = "./fish";
+      source = ../../config/fish;
+      recursive = true;
+    };
   };
   
   wayland = {
@@ -102,9 +111,7 @@ in {
        config = {
         input = {
           "type:keyboard" = {
-            "xkb_layout" = "de";
-            "xkb_variant" = "nodeadkeys";
-            "xkb_options" = "ctrl:nocaps";
+            "xkb_layout" = "us";
           };
           "type:pointer" = {
             "left_handed" = "enabled";
@@ -118,13 +125,14 @@ in {
       { command = "flashfocus"; } 
       { command = "udiskie --appindicator -t"; } 
       { command = "setrandom -m scale ~/Wallpapers"; } 
+      { command = "pasystray"; } 
     ];
     #terminal = ''st -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
     terminal = ''foot -f "APL386 Unicode:size=12:autohint=true:antialias=true"'';
     menu = "wofi --show drun";
     modifier = mod;
         #fonts = ["DejaVu Sans Mono, FontAwesome 6"];
-        fonts = ["APL386 Unicode:size=10"];
+        fonts = ["pango: APL386 Unicode 11"];
         colors = {
             focused = {
               border = focus;
