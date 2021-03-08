@@ -14,6 +14,7 @@ in
       <nixos-hardware/common/pc/ssd>
       <nixos-hardware/lenovo/thinkpad/tp-smapi.nix>
       ./hardware-configuration.nix
+      ./network-configuration.nix
     ];
   
   # Use the tp_smapi module for battery control
@@ -34,19 +35,9 @@ in
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-  networking.hostName = "alberich"; # Define your hostname.
-  networking.networkmanager.enable = true;
-
   zramSwap.enable = true;
 
   time.timeZone = "Europe/Berlin";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp0s25.useDHCP = true;
-  networking.interfaces.wlp2s0.useDHCP = true;
 
   # Keep the system upgraded
   system.autoUpgrade = {

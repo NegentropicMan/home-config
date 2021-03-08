@@ -27,7 +27,6 @@ in {
     kanshi # autorandr
     mako # Notification daemon
     mupdf
-    networkmanagerapplet
     swayidle
     swaylock
     waybar
@@ -74,27 +73,27 @@ in {
     };
     WaybarConfig = {
       target = "./waybar";
-      source = ../../config/waybar;
+      source = ./config/waybar;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
     MakoConfig = {
       target = "./mako";
-      source = ../../config/mako;
+      source = ./config/mako;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
     FlashFocusConfig = {
       target = "./flashfocus";
-      source = ../../config/flashfocus;
+      source = ./config/flashfocus;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
     KanshiConfig = {
       target = "./kanshi";
-      source = ../../config/kanshi;
+      source = ./config/kanshi;
       recursive = false; # If false, the directory is linked. If true, the files are linked
     };
     AutostartSway = {
       target = "./fish";
-      source = ../../config/fish;
+      source = ./config/fish;
       recursive = true;
     };
   };
