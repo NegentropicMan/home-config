@@ -5,7 +5,7 @@
   imports = [
     ./Users/pi.nix
     #./Roles/graphical.nix
-    ./common.nix
+    ./Common/common.nix
   ];
 
   home.packages = with pkgs; [
