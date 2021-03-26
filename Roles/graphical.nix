@@ -9,7 +9,7 @@
   ];
 
   home.packages = with pkgs; [
-    mupdf
+    zathura
     cantata
     dropbox
   ];

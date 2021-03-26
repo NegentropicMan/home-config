@@ -21,6 +21,7 @@ in
     exa
     aria
     ddate
+    direnv
   ];
 
   programs.broot = {
