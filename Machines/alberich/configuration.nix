@@ -21,11 +21,11 @@ in
   # @@@todo: Find out how to use only this one, not the other one
   # boot.extraModulePackages = with config.boot.kernelPackages; [ tp_smapi ];
   services.tlp.settings = {
-    TPACIP_ENABLE = 0;
+    TPACPI_ENABLE = 0;
     NATACPI_ENABLE = 0;
     TPSMAPI_ENABLE = 1;
     START_CHARGE_THRESH_BAT0 = 40;
-    STOP_CHARGE_THRESH_BAT0 = 80;
+    STOP_CHARGE_THRESH_BAT0 = 90;
   };
 
   # Use the GRUB 2 boot loader.
@@ -130,8 +130,6 @@ in
     enable = true;
     extraConfig = "load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"; # Needed by mpd to be able to use Pulseaudio
   };
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.fschmitz = {
@@ -144,7 +142,7 @@ in
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    ly wget vim gitAndTools.gitFull modemmanager home-manager ntfs3g
+    ly wget vim fossil gitAndTools.gitFull modemmanager home-manager ntfs3g
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

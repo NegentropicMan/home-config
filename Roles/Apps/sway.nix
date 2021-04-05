@@ -26,7 +26,7 @@ in {
     foot #Terminal emulator
     kanshi # autorandr
     mako # Notification daemon
-    mupdf
+    sumatra
     swayidle
     swaylock
     waybar
@@ -48,7 +48,7 @@ in {
     enable = true;
     automount = true;
     notify = true;
-    tray = "auto";
+    tray = "never";
   };
 
   fonts.fontconfig.enable = true;
@@ -111,10 +111,14 @@ in {
         input = {
           "type:keyboard" = {
             "xkb_layout" = "us";
+	    "xkb_variant" = "intl";
           };
           "type:pointer" = {
             "left_handed" = "enabled";
           };
+	  "1390:253:ELECOM_ELECOM_TrackBall_Mouse" = {
+	    "left_handed" = "disabled";
+	  };
        };
     startup = [
       { command = "dropbox"; } 
@@ -122,7 +126,7 @@ in {
       { command = "kanshi"; } 
       { command = "autotiling"; } 
       { command = "flashfocus"; } 
-      { command = "udiskie --appindicator -t"; } 
+#      { command = "udiskie --appindicator -t"; } 
       { command = "setrandom -m scale ~/Wallpapers"; } 
       { command = "pasystray"; } 
     ];

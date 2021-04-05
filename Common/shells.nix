@@ -41,7 +41,11 @@ in
     inherit shellAliases;
   };
 
-  programs.autojump.enable = true; 
+  programs.autojump = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+     
   programs.bash = {
     enable = true;
     historyIgnore = [ "l" "ls" "cd" "exit" ];
@@ -63,5 +67,6 @@ in
   programs.fzf = {
     enable = true;
     enableBashIntegration = true;
+    enableFishIntegration = true;
   };
 }
