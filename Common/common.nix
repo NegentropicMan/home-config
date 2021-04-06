@@ -19,6 +19,7 @@
     stress
     lshw
     vis
+    lorri
   ];
   xdg.configFile = {
     VisConfig = {

@@ -8,6 +8,11 @@ let
 in 
 {
   nixpkgs.config.allowUnfree = true;
+  nix.package = pkgs.nixFlakes;
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
+  nix.trustedUsers = [ "root" "fschmitz" ];
 
   imports = [ # Include the results of the hardware scan.
       <nixos-hardware/lenovo/thinkpad>
@@ -66,7 +71,6 @@ in
   programs.light.enable = true;
   programs.dconf.enable = true;
   programs.fish.enable = true;
-  hardware.acpilight.enable = true;
 
   # Keybindings for adjusting monitor brightness. Adjusting brightness with
   # actkbd+light is nice because it's independent of X and works in ttys.
@@ -117,12 +121,16 @@ in
   };
 
   # hardware.opengl.driSupport32Bit = true;
-  hardware.opengl.driSupport = true;
-  
-  programs.sway.enable = true;
+  hardware = {
+    acpilight.enable = true;
+    cpu.intel.updateMicrocode = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  programs.sway.enable = true;
 
   # Enable sound.
   sound.enable = true;

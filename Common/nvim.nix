@@ -43,7 +43,7 @@ in
         set showcmd
 	set nowrap
         let mapleader=","
-	set foldmethod=indent
+	" set foldmethod=indent
 	set wildmenu " Shows an extended menu for command expansion
         nnoremap <Leader>s :SemanticHighlightToggle<cr>
 	" Save and load the curren view (folds) of the file automatically
