@@ -12,6 +12,11 @@
     shortcut = "a";
   };
 
+  programs.exa {
+    enable = true;
+    enableAliases = true;
+  }
+
   home.packages = with pkgs; [
     nix-prefetch-git
     nix-index
@@ -22,6 +27,7 @@
     lorri
     mtm
   ];
+  
   xdg.configFile = {
     VisConfig = {
       target = "vis";

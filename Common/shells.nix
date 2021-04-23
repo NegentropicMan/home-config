@@ -2,9 +2,6 @@
 
 let
   shellAliases = {
-    l = "exa";
-    ls = "exa";
-    copy = "xclip -i -selection clipboard";
     g = "git";
     e = "eval $EDITOR";
     ee = "e (fzf)";
