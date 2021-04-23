@@ -20,6 +20,7 @@
     lshw
     vis
     lorri
+    mtm
   ];
   xdg.configFile = {
     VisConfig = {
