@@ -59,6 +59,7 @@ in
         papercolor-theme
         vim-addon-nix
         semantic-highlight
-    ];
+        vim-nix
+        ];
   };
 }

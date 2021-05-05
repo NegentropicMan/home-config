@@ -5,6 +5,7 @@
     ./shells.nix
     ./nvim.nix
     ./format-udf.nix
+    ./literate.nix
   ];
 
   programs.tmux = {
