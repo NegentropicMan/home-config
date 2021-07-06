@@ -13,10 +13,10 @@
     shortcut = "a";
   };
 
-  programs.exa = {
-    enable = true;
-    enableAliases = true;
-  };
+#  programs.exa = {
+#    enable = true;
+#    enableAliases = true;
+#  };
 
   home.packages = with pkgs; [
     nix-prefetch-git

@@ -7,6 +7,7 @@ let
 in {
 
   imports = [
+    ./apl386.nix
   ];
   home.packages = with pkgs; [
     (st.overrideAttrs (oldAttrs: rec {
